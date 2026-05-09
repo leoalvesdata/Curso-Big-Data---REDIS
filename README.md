@@ -1,6 +1,6 @@
 # Curso-Big-Data---REDIS
 
-Description
+Description:
 This project demonstrates the use of Redis (NoSQL) to manage user sessions, interests, and visit counts.
 
 Technical Implementation
