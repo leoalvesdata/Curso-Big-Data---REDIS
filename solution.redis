@@ -1,0 +1,44 @@
+set user1:ultima_visita "13/10/2021"
+set user1:ultimo_interesse "/desporto/basquetebol"
+set user1:total_visitas "10"
+
+set user2:ultima_visita "14/10/2021"
+set user2:ultimo_interesse "/notícias/atualidade"
+set user2:total_visitas "15"
+
+set user3:ultima_visita "14/10/2021"
+set user3:ultimo_interesse "/notícias/atualidade"
+set user3:total_visitas "2"
+
+RPUSH user3:historico_interesses "/noticias/atualidade" 
+ZADD user3:historico_acesso 20211014 "14/10/2021"
+
+set user3:ultima_visita "17/10/2021"
+set user3:ultimo_interesse "/desporto/voleibol"
+INCR user3:total_visitas
+
+RPUSH user3:historico_interesses "/desporto/voleibol"
+ZADD user3:historico_acesso 20211017 "17/10/2021"
+
+ZADD user1:historico_acesso 20211001 "01/10/2021"
+ZADD user1:historico_acesso 20211010 "10/10/2021"
+ZADD user1:historico_acesso 20211013 "13/10/2021"
+RPUSH user1:historico_interesses "/home"
+RPUSH user1:historico_interesses "/noticias"
+RPUSH user1:historico_interesses "/desporto/basquetebol"
+
+EXPIRE user2:ultimo_interesse 30
+TTL user2:ultimo_interesse
+
+DEL user1:total_visitas
+EXISTS user1:total_visitas
+
+SORT user1:historico_interesses ALPHA
+LRANGE user1:historico_interesses 0 -1
+
+SADD user:id1 "user1"
+SADD user:id2 "user2"
+SADD user:id3 "user3"
+
+SUNIONSTORE todos_utilizadores user:id1 user:id2 user:id3
+SMEMBERS todos_utilizadores
