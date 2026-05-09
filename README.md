@@ -15,8 +15,8 @@ Lists (`RPUSH`): Chosen for "Interest History" to preserve the chronological ord
 Sorted Sets (`ZADD`): Used for "Access Dates". I utilized a numeric score in the `YYYYMMDD` format to ensure the Redis engine automatically orders visits from the oldest to the newest.
 
 ### Data Operations
-*Sorting**: Used the `SORT ... ALPHA` command to organize text-based interests alphabetically for better visualization.
-*Set Union**: Demonstrated the use of `SADD` and `SUNIONSTORE` to aggregate unique user names from different sets into a single new variable.
+Sorting: Used the `SORT ... ALPHA` command to organize text-based interests alphabetically for better visualization.
+Set Union: Demonstrated the use of `SADD` and `SUNIONSTORE` to aggregate unique user names from different sets into a single new variable.
 
 ---
 ## About Me
